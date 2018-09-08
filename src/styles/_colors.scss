@@ -1,0 +1,24 @@
+/*
+    Detected colors from iMedicina website
+*/
+$color-pink: (3:#e41b6a);
+$color-black: (0:#eef3f5, 1:#648596, 2:#395e6f, 3:#28404c, 4:#10394a, 5:#022331);
+$color-blue: (1:#58bbd5);
+
+$color-list: (
+    'pink': $color-pink,
+    'black': $color-black,
+    'blue': $color-blue,
+);
+
+@function color($color, $type) {
+  @if map-has-key($color-list, $color) {
+    $curr_color: map-get($color-list, $color);
+
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+
+  @return null;
+}

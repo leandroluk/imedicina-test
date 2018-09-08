@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/_mixins';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/_buttons';
+@import '../colors';
+
+.btn {
+  &.radius {
+    border-radius: 1rem;
+  }
+
+  &.btn-black-2 {
+    @include button-variant(
+      color('black', 3), 
+      color('black', 4),
+      color('black', 2),
+      color('black', 3),
+      color('black', 2),
+      color('black', 4)
+    );
+  }
+}

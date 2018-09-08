@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/_type";
+
+// Importing from Google fonts Ubuntu font (is detected default font on iMedicina website)
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  font-family: 'Ubuntu', sans-serif
+}

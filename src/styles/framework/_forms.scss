@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/_forms";
+@import '../_colors';
+
+.form-control {
+  &.radius {
+    border-radius: 1rem;
+  }
+
+  &:focus {
+    border-color: color('black', 1) !important;
+    box-shadow: inherit;
+  }
+}
+
+.form-group {
+  &.without-label {
+    padding-top: 16px;
+  }
+}
