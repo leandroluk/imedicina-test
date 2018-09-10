@@ -1,4 +1,4 @@
-import { ILink } from "@app/core/interfaces/link.interface";
+import { ILink } from "@core/interfaces/link.interface";
 
 export interface ILinks {
     self?: ILink[];

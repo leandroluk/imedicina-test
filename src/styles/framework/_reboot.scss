@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/_reboot";
+@import '../_colors';
+
+a,
+a:visited,
+a:active,
+a:link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+body{
+  background-color: color('black', 0);
+}

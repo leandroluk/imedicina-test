@@ -1,0 +1,6 @@
+@import '../_variables';
+@import "~bootstrap/scss/_badge";
+
+.badge-primary{
+    background-color: color('blue', 1);
+}

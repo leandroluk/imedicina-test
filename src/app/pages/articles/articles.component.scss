@@ -1,0 +1,30 @@
+page-articles {
+  display: block;
+  min-height: 100vh;
+
+  .btn-menu {
+
+    .menu {
+      width: 0;
+    }
+
+    &:hover .menu,
+    &:focus .menu {
+      width: 115px;
+    }
+
+  }
+
+  .menu {
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    text-align: right;
+    width: 115px;
+    background: white;
+    padding-left: 0.5rem;
+  }
+}

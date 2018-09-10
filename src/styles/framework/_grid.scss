@@ -2,19 +2,30 @@
 @import "~bootstrap/scss/_mixins";
 @import "~bootstrap/scss/_variables";
 @import "~bootstrap/scss/_grid";
-@import "../_colors";
+@import "~bootstrap/scss/_utilities";
+@import "../colors";
 
-.d-flex {
+.d-flex-c {
+  @extend .d-flex;
   flex-direction: column;
+}
 
-  &.d-flex-center {
-    justify-content: center;
-    align-items: center;
-  }
+.d-flex-r {
+  @extend .d-flex;
+  flex-direction: row;
+}
+
+.d-flex-center {
+  justify-content: center;
+  align-items: center;
 }
 
 @for $i from 0 through 12 {
   .flex-#{$i} {
     flex: $i;
   }
+}
+
+.b-shadow {
+  box-shadow: 0.1rem 0.1rem 0.25rem rgba(0, 0, 0, .1) !important;
 }

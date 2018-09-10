@@ -1,4 +1,5 @@
-import { ILinks, IObjectState } from "@app/core/interfaces";
+import { ILinks } from "@core/interfaces/links.interfaces";
+import { IObjectState } from "@core/interfaces/object-state.interface";
 
 export interface IPost {
     id?: number;
@@ -8,6 +9,7 @@ export interface IPost {
     modified?: Date;
     modified_gmt?: Date;
     slug?: string;
+    status?: string;
     type?: string;
     link?: string;
     title?: IObjectState;

@@ -4,12 +4,35 @@
 $color-pink: (3:#e41b6a);
 $color-black: (0:#eef3f5, 1:#648596, 2:#395e6f, 3:#28404c, 4:#10394a, 5:#022331);
 $color-blue: (1:#58bbd5);
-
-$color-list: (
-    'pink': $color-pink,
-    'black': $color-black,
-    'blue': $color-blue,
+$color-shades: ("k": #000000, "w": #FFFFFF, "a": transparent);
+$color-list: ('pink': $color-pink,
+'black': $color-black,
+'blue': $color-blue,
 );
+
+@each $color_name, $color in $color-list {
+  @each $color_type, $color_value in $color {
+      .bg-#{$color_name}-#{$color_type}, .abg-#{$color_name}-#{$color_type}.active {
+          background-color: $color_value !important;
+      }
+      .fg-#{$color_name}-#{$color_type}, .afg-#{$color_name}-#{$color_type}.active {
+          color: $color_value !important;
+      }
+      .bc-#{$color_name}-#{$color_type}, .abc-#{$color_name}-#{$color_type}.active {
+          border-color: $color_value !important;
+      }
+  }
+}
+
+@each $color, $color_value in $color-shades {
+  .bg-#{$color} {
+    background-color: $color_value !important;
+  }
+
+  .fg-#{$color} {
+    color: $color_value !important;
+  }
+}
 
 @function color($color, $type) {
   @if map-has-key($color-list, $color) {

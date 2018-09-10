@@ -1,0 +1,17 @@
+.text-dots {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.pointer {
+  cursor: pointer;
+}

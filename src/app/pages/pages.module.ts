@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToasterModule } from 'angular2-toaster';
 
-import { CoreModule } from '@app/core';
-import { CommonsModule } from '@app/commons';
+import { CoreModule } from '@core/core.module';
+import { CommonsModule } from './+commons/commons.module';
+import { UiModule } from '@ui/ui.module';
 import { PagesRoutingModule } from './pages-routing.module';
 
-import { LoginComponent } from './login';
-import { ArticlesComponent } from './articles';
-import { ArticleComponent } from './article';
+import { LoginComponent } from './login/login.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { ArticleComponent } from './article';
         ReactiveFormsModule,
         ToasterModule.forChild(),
         //
+        UiModule,
         CoreModule,
         CommonsModule,
         PagesRoutingModule

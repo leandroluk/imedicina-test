@@ -1,3 +1,78 @@
-<p>
-  articles works!
-</p>
+<div class="has-navbar">
+
+  <commons-navbar></commons-navbar>
+
+  <div class="container py-3 animated fadeIn">
+    <div class="row">
+      <div class="col">
+        <div class="list-group">
+          <div class="list-group-item" *ngFor="let post of posts | async | orderBy: 'id': false">
+            <div class="container p-0">
+              <div class="row" tabindex="-1">
+
+                <div class="col-auto pl-2 text-center" [style.width.px]="50">
+                  <span class="badge badge-primary bg-b-3">{{ post.id }}</span>
+                </div>
+
+                <div class="col p-0 pt-1 no-overflow">
+                  <div class="container-fluid p-0">
+                    <div class="row">
+                      <div class="col-12 col-lg-6 text-dots">{{ post.title.rendered }}</div>
+                      <div class="col-auto">
+                        <span>data</span><span class="badge">{{ post.date | date: 'dd/MM/yyyy'}}</span></div>
+                      <div class="col-auto">
+                        <span>status</span><span class="badge fg-blue-1">{{ post.status }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-auto d-block d-lg-none pr-2 pos-relative">
+                  <ul class="pl-0 btn-menu d-inline">
+                    <li class="btn btn-sm btn-light bg-w btn-icon">
+
+                      <icon-bars [style.width.px]="20" [style.height.px]="20"></icon-bars>
+
+                      <ul class="pl-0 menu">
+                        <li class="btn btn-sm btn-light bg-w btn-icon mr-2">
+                          <a [href]="post.link" target="_new">
+                            <icon-eye [style.width.px]="20" [style.height.px]="20"></icon-eye>
+                          </a>
+                        </li>
+                        <li class="btn btn-sm btn-light bg-w btn-icon mr-2" [routerLink]="['/article/' + post.id]">
+                          <icon-pencil [style.width.px]="20" [style.height.px]="20"></icon-pencil>
+                        </li>
+                        <li class="btn btn-sm btn-light bg-w btn-icon" (click)="deletePost(post.id)">
+                          <icon-minus [style.width.px]="20" [style.height.px]="20"></icon-minus>
+                        </li>
+                      </ul>
+
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-auto d-none d-lg-block">
+                  <ul class="pl-0 menu">
+                    <li class="btn btn-sm btn-light bg-w btn-icon mr-2">
+                      <a [href]="post.link" target="_new">
+                        <icon-eye [style.width.px]="20" [style.height.px]="20"></icon-eye>
+                      </a>
+                    </li>
+                    <li class="btn btn-sm btn-light bg-w btn-icon mr-2" [routerLink]="['/article/' + post.id]">
+                      <icon-pencil [style.width.px]="20" [style.height.px]="20"></icon-pencil>
+                    </li>
+                    <li class="btn btn-sm btn-light bg-w btn-icon" (click)="deletePost(post.id)">
+                      <icon-minus [style.width.px]="20" [style.height.px]="20"></icon-minus>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

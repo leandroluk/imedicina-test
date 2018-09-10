@@ -28,7 +28,6 @@
             ],
             "styles": [
               "src/styles/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

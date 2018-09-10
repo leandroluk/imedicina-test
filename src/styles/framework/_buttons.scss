@@ -9,13 +9,18 @@
   }
 
   &.btn-black-2 {
-    @include button-variant(
-      color('black', 3), 
-      color('black', 4),
-      color('black', 2),
-      color('black', 3),
-      color('black', 2),
-      color('black', 4)
-    );
+    @include button-variant(color('black', 3),
+    color('black', 4),
+    color('black', 2),
+    color('black', 3),
+    color('black', 2),
+    color('black', 4));
+  }
+}
+
+.btn-icon {
+  &.btn-sm {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
   }
 }

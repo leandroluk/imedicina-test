@@ -1,4 +1,5 @@
-import { IAvatarUrl, ILinks } from "@app/core/interfaces";
+import { IAvatarUrl } from "@core/interfaces/avatar-url.interface";
+import { ILinks } from "@core/interfaces/links.interfaces";
 
 export interface IUser {
     id?: number;
