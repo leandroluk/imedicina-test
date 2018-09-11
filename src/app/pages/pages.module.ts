@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToasterModule } from 'angular2-toaster';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { CoreModule } from '@core/core.module';
 import { CommonsModule } from './+commons/commons.module';
@@ -20,8 +21,9 @@ import { ArticleComponent } from './article/article.component';
     ],
     imports: [
         CommonModule,
-        ReactiveFormsModule,
+        FormsModule, ReactiveFormsModule,
         ToasterModule.forChild(),
+        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
         //
         UiModule,
         CoreModule,

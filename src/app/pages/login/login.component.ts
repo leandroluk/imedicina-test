@@ -43,12 +43,10 @@ export class LoginComponent {
       .entrar(data.inputLogin, data.inputSenha)
       .subscribe(
         (res) => {
-          console.log(res);
           this.router.navigate(['articles']);
           this.isLoading = false;
         },
         (err: IResponseJwt) => {
-          console.log(err);
           this.isLoading = false;
           this.toast.pop('error', err.message);
         },

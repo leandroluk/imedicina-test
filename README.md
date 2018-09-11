@@ -4,7 +4,7 @@ Projeto desenvolvido para o teste de **Desenvolvedor Front End** da empresa iMed
 
 ## Wireframe
 
-Para o projeto foi criado um wireframe no programa Axure RP que pode ser acessado no link http://imedicina-test.wireframe.surge.sh.
+Para o projeto foi criado um wireframe no programa Axure RP que pode ser acessado no link http://leandroluk.imedicina-test.wireframe.surge.sh.
 
 ## Dependencias
 

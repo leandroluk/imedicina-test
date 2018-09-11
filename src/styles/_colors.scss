@@ -18,6 +18,9 @@ $color-list: ('pink': $color-pink,
       .fg-#{$color_name}-#{$color_type}, .afg-#{$color_name}-#{$color_type}.active {
           color: $color_value !important;
       }
+      .sfg-#{$color_name}-#{$color_type}, &.safg-#{$color_name}-#{$color_type}.active {
+          fill: $color_value !important;
+      }
       .bc-#{$color_name}-#{$color_type}, .abc-#{$color_name}-#{$color_type}.active {
           border-color: $color_value !important;
       }
@@ -30,6 +33,9 @@ $color-list: ('pink': $color-pink,
   }
 
   .fg-#{$color} {
+    color: $color_value !important;
+  }
+  .sfg-#{$color} {
     color: $color_value !important;
   }
 }

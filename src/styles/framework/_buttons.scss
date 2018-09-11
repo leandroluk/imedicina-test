@@ -4,6 +4,12 @@
 @import '../colors';
 
 .btn {
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+  }
+
   &.radius {
     border-radius: 1rem;
   }
