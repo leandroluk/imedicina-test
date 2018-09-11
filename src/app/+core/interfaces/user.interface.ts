@@ -11,4 +11,8 @@ export interface IUser {
     avatar_urls?: IAvatarUrl[];
     meta?: string[];
     _links?: ILinks;
+    token?: string;
+    user_display_name?: string;
+    user_email?: string;
+    user_nicename?: string;
 }

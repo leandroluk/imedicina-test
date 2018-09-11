@@ -5,16 +5,17 @@ export interface IPost {
     id?: number;
     date?: Date;
     date_gmt?: Date;
-    guid?: IObjectState;
+    guid?: IObjectState | string;
     modified?: Date;
     modified_gmt?: Date;
     slug?: string;
     status?: string;
+    password?: string;
     type?: string;
     link?: string;
-    title?: IObjectState;
-    content?: IObjectState;
-    excerpt?: IObjectState;
+    title?: IObjectState | string;
+    content?: IObjectState | string;
+    excerpt?: IObjectState | string;
     author?: number;
     featured_media?: number;
     comment_status?: string;
@@ -26,4 +27,5 @@ export interface IPost {
     categories?: number[];
     tags?: string[];
     _links?: ILinks;
+    liveblog_likes?: number;
 }

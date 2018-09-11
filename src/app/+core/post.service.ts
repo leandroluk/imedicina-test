@@ -30,4 +30,24 @@ export class PostService {
     return this.http.get<IPost>(`${this.baseUrl}/${id}`, this.headers);
   }
 
+  public insertPost(post: IPost) {
+    return this.http.post(this.baseUrl, post, this.headers);
+  }
+
+  public updatePost(id: number, p: IPost) {
+    
+    let n = {
+      data: p.date,
+      date_gmt: p.date_gmt,
+      slug: p.slug,
+      status: p.slug,
+      title: p.title,
+      content: p.content,
+      author: p.author,
+      comment_status: p.comment_status,
+    };
+
+    return this.http.post(`${this.baseUrl}/${id}`, n, this.headers);
+  }
+
 }
