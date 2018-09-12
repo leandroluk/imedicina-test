@@ -22,7 +22,17 @@
     color('black', 2),
     color('black', 4));
   }
+  &.btn-blue-2 {
+    @include button-variant(color('blue', 3),
+    color('blue', 4),
+    color('blue', 2),
+    color('blue', 3),
+    color('blue', 2),
+    color('blue', 4));
+  }
 }
+
+
 
 .btn-icon {
   &.btn-sm {

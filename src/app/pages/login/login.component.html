@@ -1,23 +1,28 @@
 <div class="container-fluid d-flex flex-1">
+
   <div class="row flex-1">
+
     <div class="d-none d-sm-block col-2 col-md-4 col-lg-6 col-xl-7 bg-login"></div>
+
     <div class="col d-flex-c d-flex-center col-form">
+
       <div class="d-flex d-flex-center flex-1">
-        <form [formGroup]='form' (ngSubmit)="validation && submit(form.value)" [style.max-width.px]="300" class="mx-auto">
+        <form [style.max-width.px]="300" class="mx-auto" (ngSubmit)="submit()">
+
           <img src="assets/logo.png" alt="Logomarca iMedicina" class="img-fluid p-3">
 
           <div class="form-group">
-            <label for="login-form-inputLogin" class="d-block">Login</label>
-            <input id="login-form-inputLogin" type="text" class="form-control radius" formControlName="inputLogin">
+            <label class="d-block">Login</label>
+            <input type="text" class="form-control radius" name="login" [(ngModel)]="usuario.login">
           </div>
 
           <div class="form-group">
-            <label for="login-form-inputSenha" class="d-block">Senha</label>
-            <input id="login-form-inputSenha" type="password" class="form-control radius" formControlName="inputSenha">
+            <label class="d-block">Senha</label>
+            <input type="password" class="form-control radius" name="senha" [(ngModel)]="usuario.senha">
           </div>
 
           <div class="form-group without-label">
-            <button class="btn btn-block btn-black-2 radius" [disabled]="form.invalid" (click)="validation = true">
+            <button type="submit" class="btn btn-block btn-black-2 radius">
               <span *ngIf="!isLoading">entrar</span>
               <span *ngIf="!!isLoading">verificando...</span>
             </button>
@@ -25,8 +30,9 @@
 
         </form>
       </div>
-      <commons-footer></commons-footer>
-    </div>
 
+      <commons-footer></commons-footer>
+
+    </div>
   </div>
 </div>

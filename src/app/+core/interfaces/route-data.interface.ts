@@ -1,3 +1,3 @@
 export interface IRouteData {
-    title?: string;
+  title?: string;
 }

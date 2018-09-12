@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPost } from '@app/+core/interfaces/post.interface';
-import { PostService } from '@app/+core/post.service';
-import { IObjectState } from '@app/+core/interfaces/object-state.interface';
-import { slug } from '@app/+core/slug.function';
-import { AuthService } from '@app/+core/auth.service';
+import { PostService, UserService } from '@app/+core/services';
+import { IObjectState, IAppStore, IUser } from '@app/+core/interfaces';
+import { slug } from '@app/+core/functions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'page-article',
@@ -13,6 +13,7 @@ import { AuthService } from '@app/+core/auth.service';
 })
 export class ArticleComponent {
 
+  private user: IUser;
   public post: IPost = {
     guid: {},
     title: {},
@@ -30,19 +31,15 @@ export class ArticleComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private store: Store<IAppStore>,
     private postService: PostService,
-    private authService: AuthService
+    private userService: UserService,
   ) {
-
     this.route.params.subscribe((params: { id: number }) => {
-
       if (!params.id) return;
-
       this.postService.getPost(params.id)
         .subscribe(post => this.post = Object.assign(this.post, post));
-
     });
-
   }
 
   submit() {
@@ -66,18 +63,8 @@ export class ArticleComponent {
   }
 
   insert(post: IPost) {
-    this.authService.authState.subscribe(user => {
-
-      post.date_gmt = post.date = new Date();
-      post.status = 'publish';
-      post.author = user.id;
-
-      this.postService.insertPost(post).subscribe(
-        res => console.log(res),
-        err => console.log('err', err)
-      );
-
+    this.postService.insertPost(post).subscribe(res => {
+      console.log(res);
     });
   }
-
 }

@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@core/store';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
-    ReactiveFormsModule,
+    StoreModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
   ],

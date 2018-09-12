@@ -1,4 +1,4 @@
 export interface IObjectState {
-    rendered?: string;
-    protected?: boolean;
+  rendered?: string;
+  protected?: boolean;
 }

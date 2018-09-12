@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { AuthService } from '@core/auth.service';
-import { ToasterService } from 'angular2-toaster';
-import { IResponseJwt } from '@core/interfaces/response-jwt.interface';
 import { Router } from '@angular/router';
+import { ToasterService } from 'angular2-toaster';
+
+import { IResponseJwt } from '@core/interfaces';
+import { UserService } from '@core/services';
 
 @Component({
   selector: 'page-login',
@@ -13,37 +12,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  isLoading: boolean;
-
-  form: FormGroup;
-  inputLogin: FormControl;
-  inputSenha: FormControl;
+  public isLoading?: boolean = false;
+  public usuario: { login?: string, senha?: string } = {};
 
   constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
+    private userService: UserService,
     private toast: ToasterService,
     private router: Router
-  ) {
+  ) { }
 
-    this.inputLogin = new FormControl('', [Validators.required]);
-    this.inputSenha = new FormControl('', [Validators.required]);
-
-    this.form = this.fb.group({
-      inputLogin: this.inputLogin,
-      inputSenha: this.inputSenha
-    });
-
-  }
-
-  submit(data: { inputLogin: string, inputSenha: string }) {
+  submit() {
     this.isLoading = true;
 
-    this.auth
-      .entrar(data.inputLogin, data.inputSenha)
+    this.userService
+      .postLogin(this.usuario.login, this.usuario.senha)
       .subscribe(
         (res) => {
-          this.router.navigate(['articles']);
+          this.router.navigateByUrl('/articles');
           this.isLoading = false;
         },
         (err: IResponseJwt) => {
@@ -52,6 +37,9 @@ export class LoginComponent {
         },
         () => this.isLoading = false
       );
+
+    this.isLoading = false;
+
   }
 
 }

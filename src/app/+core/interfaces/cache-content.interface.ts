@@ -1,4 +1,4 @@
 export interface ICacheContent {
-    expiry: number;
-    value: any;
+  expiry: number;
+  value: any;
 }

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AuthService } from '@core/auth.service';
-import { CacheService } from '@app/+core/cache.service';
-import { OrderByPipe } from './order-by.pipe';
+import { FormsModule } from '@angular/forms';
+import { PipesModule } from '@app/+core/pipes';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    PipesModule
   ],
-  providers: [AuthService, CacheService],
-  declarations: [OrderByPipe],
-  exports: [OrderByPipe]
+  exports: [
+    FormsModule,
+    PipesModule
+  ]
 })
 export class CoreModule { }

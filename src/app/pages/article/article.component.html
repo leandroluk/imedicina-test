@@ -8,13 +8,14 @@
         <div class="card">
 
           <div class="card-header bg-w d-flex justify-content-end">
-            <button type="text" class="btn btn-sm btn-icon btn-primary fg-w d-flex d-flex-center" (click)="submit()">
+            <button type="text" class="btn btn-sm btn-icon btn-blue-2 fg-w d-flex d-flex-center" (click)="submit()">
               <span class="px-2">salvar</span>
               <icon-save [style.width.px]="20" [style.height.px]="20" class="sfg-w"></icon-save>
             </button>
           </div>
 
           <div class="container py-3">
+              
             <div class="row">
 
               <div class="col-12 col-lg-6 col-xl-7">
@@ -32,15 +33,17 @@
               </div>
 
             </div>
+
             <div class="row">
               <div class="col">
                 <div [froalaEditor]="froalaOptions" [(ngModel)]="post.content.rendered"></div>
               </div>
             </div>
+
           </div>
 
           <div class="card-footer bg-w d-flex justify-content-end">
-            <button type="text" class="btn btn-sm btn-icon btn-primary fg-w d-flex d-flex-center" (click)="submit()">
+            <button type="text" class="btn btn-sm btn-icon btn-blue-2 fg-w d-flex d-flex-center" (click)="submit()">
               <span class="px-2">salvar</span>
               <icon-save [style.width.px]="20" [style.height.px]="20" class="sfg-w"></icon-save>
             </button>

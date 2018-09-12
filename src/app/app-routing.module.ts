@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', loadChildren: 'src/app/pages/pages.module#PagesModule' }
+  { path: '', loadChildren: 'src/app/pages/pages.module#PagesModule' },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

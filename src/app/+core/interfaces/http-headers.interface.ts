@@ -1,3 +1,3 @@
 export interface IHttpHeaders {
-    [header: string]: string | string[];
+  [header: string]: string | string[];
 }
