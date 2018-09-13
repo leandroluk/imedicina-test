@@ -5,7 +5,7 @@ export interface IPost {
   id?: number;
   date?: Date;
   date_gmt?: Date;
-  guid?: IObjectState | string;
+  guid?: IObjectState;
   modified?: Date;
   modified_gmt?: Date;
   slug?: string;
@@ -13,9 +13,9 @@ export interface IPost {
   password?: string;
   type?: string;
   link?: string;
-  title?: IObjectState | string;
-  content?: IObjectState | string;
-  excerpt?: IObjectState | string;
+  title?: IObjectState ;
+  content?: IObjectState ;
+  excerpt?: IObjectState ;
   author?: number;
   featured_media?: number;
   comment_status?: string;

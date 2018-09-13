@@ -1,0 +1,8 @@
+@import "~bootstrap/scss/_modal";
+
+.modal {
+  .modal-backdrop {
+    opacity: 0.2;
+    z-index: 0;
+  }
+}

@@ -1,4 +1,4 @@
-page-articles {
+:host() {
   display: block;
   min-height: 100vh;
 
@@ -26,5 +26,13 @@ page-articles {
     width: 115px;
     background: white;
     padding-left: 0.5rem;
+  }
+
+  .btn-add {
+    border-radius: 100% !important;
+    padding: 0.25rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
   }
 }

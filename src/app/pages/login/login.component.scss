@@ -1,6 +1,6 @@
 @import 'colors', 'framework/_grid';
 
-page-login {
+:host() {
   width: 100%;
   display: flex;
   flex-direction: column;

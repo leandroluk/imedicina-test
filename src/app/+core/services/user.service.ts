@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '@env/environment';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
-import { IUser, IEnviroment, IHttpHeaders, IAppStore } from '@core/interfaces';
+import { IUser, IHttpHeaders, IAppStore } from '@core/interfaces';
 import { CONST_CACHE_NAME } from '@core/contants';
 import { Store } from '@ngrx/store';
 import { UserOnline } from '@app/+core/store';
+import { BASE_URL } from '../..';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,13 @@ import { UserOnline } from '@app/+core/store';
 export class UserService {
 
   private get baseUrl(): string {
-    return (environment as IEnviroment).apiHost + '/wp-json';
+    return BASE_URL;
   }
 
   public get headers(): IHttpHeaders {
-    return { 'Authorization': this.user.token }
+    return {
+      'Authorization': `Basic ${this.user.btoa}`
+    };
   }
 
   private _user: IUser
@@ -47,9 +49,8 @@ export class UserService {
       .pipe((res) => {
         res.subscribe(
           (user: IUser) => {
-            this.user = user;
             this.getUser(user.user_nicename).subscribe(userComplete => {
-              this.user = Object.assign(user, userComplete[0]);
+              this.user = Object.assign({ btoa: btoa(username + ':' + password) }, user, userComplete[0]);
               this.store.dispatch(new UserOnline(this.user));
             })
           },

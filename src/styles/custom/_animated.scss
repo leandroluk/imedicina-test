@@ -1,1 +1,13 @@
 @import url('~animate.css/animate.css');
+
+.animated {
+  @for $i from 0 through 10 {
+    &.duration-#{$i} {
+      animation-duration: $i * 0.25s;
+    }
+
+    &.delay-#{$i} {
+      animation-delay: $i * 0.25s;
+    }
+  }
+}

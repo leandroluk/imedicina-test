@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { IPost } from '@app/+core/interfaces/post.interface';
-import { PostService, UserService } from '@app/+core/services';
-import { IObjectState, IAppStore, IUser } from '@app/+core/interfaces';
-import { slug } from '@app/+core/functions';
-import { Store } from '@ngrx/store';
+
+import { PostService } from '@app/+core/services';
+import { IObjectState, IPost } from '@app/+core/interfaces';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'page-article',
@@ -13,16 +13,8 @@ import { Store } from '@ngrx/store';
 })
 export class ArticleComponent {
 
-  private user: IUser;
-  public post: IPost = {
-    guid: {},
-    title: {},
-    content: {},
-    excerpt: {},
-    _links: {}
-  };
-
   public state: string;
+  public post: IPost;
 
   public froalaOptions: any = {
     placeholderText: 'Escreva seu post aqui',
@@ -31,9 +23,9 @@ export class ArticleComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<IAppStore>,
+    private location: Location,
     private postService: PostService,
-    private userService: UserService,
+    private toast: ToasterService,
   ) {
     this.route.params.subscribe((params: { id: number }) => {
       if (!params.id) return;
@@ -43,28 +35,28 @@ export class ArticleComponent {
   }
 
   submit() {
-    let post: IPost = Object.assign({}, this.post);
 
-    if (!!post.guid) post.guid = (post.guid as IObjectState).rendered;
-    if (!!post.title) post.title = (post.title as IObjectState).rendered;
-    if (!!post.content) post.content = (post.content as IObjectState).rendered;
-    if (!!post.excerpt) post.excerpt = (post.excerpt as IObjectState).rendered;
-    if (!!post.slug) post.slug = slug(post.title);
-
-    if (!!post.id) this.update(post);
-    else this.insert(post);
+    if (!!this.post.id)
+      this.update(this.post);
+    else
+      this.insert(this.post);
   }
 
   update(post: IPost) {
     this.postService.updatePost(post.id, post).subscribe(
-      res => console.log(res),
-      err => console.log('err', err)
+      res => this.toast.pop('success', 'O post foi atualizado.'),
+      err => this.toast.pop('error', err.message)
     );
   }
 
   insert(post: IPost) {
-    this.postService.insertPost(post).subscribe(res => {
-      console.log(res);
-    });
+    this.postService.insertPost(post).subscribe(
+      res => this.toast.pop('success', 'O post foi salvo com sucesso.'),
+      err => this.toast.pop('error', err.message)
+    );
+  }
+
+  back() {
+    this.location.back();
   }
 }

@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col">
         <div class="list-group">
-          <div class="list-group-item" *ngFor="let post of posts | async | orderBy: 'id': false">
+          <div class="list-group-item animated fadeIn" *ngFor="let post of posts | async | orderBy: 'id': false">
             <div class="container p-0">
               <div class="row" tabindex="-1">
 
@@ -42,7 +42,7 @@
                         <li class="btn btn-sm btn-light bg-w btn-icon mr-2" [routerLink]="['/article/' + post.id]">
                           <icon-pencil [style.width.px]="20" [style.height.px]="20"></icon-pencil>
                         </li>
-                        <li class="btn btn-sm btn-light bg-w btn-icon" (click)="deletePost(post.id)">
+                        <li class="btn btn-sm btn-light bg-w btn-icon" (click)="deletePost(post)">
                           <icon-minus [style.width.px]="20" [style.height.px]="20"></icon-minus>
                         </li>
                       </ul>
@@ -73,6 +73,33 @@
         </div>
       </div>
     </div>
+
+    <button class="btn btn-add btn-icon rounded btn-blue-2" (click)="addPost()">
+      <icon-plus [style.width.px]="30" [style.height.px]="30"></icon-plus>
+    </button>
+
   </div>
 
+</div>
+
+<div class="modal animated duration-2 fadeIn" tabindex="-1" role="dialog" 
+     [ngClass]="{ 'd-block' : !!modalIsOpen, 'fadeOut': !!modalIsClosing }">
+  
+  <div class="modal-backdrop" (click)="closeModal()"></div>
+
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Tem certeza que você quer remover a postagem</p>
+        <div class="text-center mb-3 fg-blue-3">{{ getSelectedPostTitle() }}</div>
+        <small class="alert alert-warning bg-w fg-blue-5 d-block m-0">
+          essa ação não pode ser desfeita
+        </small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block btn-light bg-w" (click)="closeModal()">Não...</button>
+        <button type="button" class="btn btn-block btn-blue-2" (click)="realyDeletePost()">Sim remover!</button>
+      </div>
+    </div>
+  </div>
 </div>

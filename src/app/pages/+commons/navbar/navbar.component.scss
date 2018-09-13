@@ -1,6 +1,7 @@
 @import '_colors';
-commons-navbar {
-    .navbar-brand {
-        color: color('blue', 1) !important;
-    }
+
+:host() {
+  .navbar-brand {
+    color: color('blue', 1) !important;
+  }
 }

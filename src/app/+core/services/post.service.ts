@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { environment } from '@env/environment';
 import { UserService } from './user.service';
-import { IPost, IHttpHeaders, IEnviroment } from '@core/interfaces';
-import { debug } from 'util';
-import { Observable, of } from 'rxjs';
+import { IPost, IHttpHeaders } from '@core/interfaces';
+import { Observable } from 'rxjs';
+import { BASE_URL } from '../..';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class PostService {
     return { headers: this.user.headers };
   };
   private get baseUrl(): string {
-    return (environment as IEnviroment).apiHost + '/wp-json/wp/v2/posts';
+    return BASE_URL + '/wp/v2/posts';
   };
 
   constructor(
@@ -33,50 +32,33 @@ export class PostService {
   }
 
   public insertPost(post: IPost): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, {
-      date: Date.now,
-      date_gmt: Date.now,
-      slug: 'asdsada',
+
+    post = {
+      title: post.title,
       status: 'publish',
-      password: null,
-      title: 'Loren Ipsum',
-      content: 'this is a test',
-      author: 1,
-      excerpt: {},
-      comment_status: 'open',
-      format: 'standard',
-      meta: [],
-      sticky: false,
-      template: '',
-      categories: [],
-      tags: [],
-      liveblog_likes: 0
-    }, this.headers);
+      content: post.content,
+      excerpt: post.excerpt,
+      author: 1
+    }
+
+    return this.http.post(`${this.baseUrl}`, post, this.headers);
   }
 
   public updatePost(id: number, post: IPost): Observable<any> {
-    debugger;
-    let data = {
-      date: post.date,
-      date_gmt: post.date_gmt,
-      slug: post.slug,
-      status: post.status,
-      password: null,
+
+    post = {
+      id: post.id,
       title: post.title,
       content: post.content,
-      author: post.author,
-      excerpt: post.excerpt,
-      comment_status: post.comment_status,
-      format: post.format,
-      meta: [].concat(post.meta),
-      sticky: post.sticky,
-      template: '' + post.template,
-      categories: [].concat(post.categories),
-      tags: [].concat(post.tags),
-      liveblog_likes: !!post.liveblog_likes ? post.liveblog_likes : 0
+      excerpt: post.excerpt
     }
-    console.log(data);
-    return this.http.post(`${this.baseUrl}/${id}`, data, this.headers);
+
+    return this.http.post(`${this.baseUrl}/${id}`, post, this.headers);
+
+  }
+
+  public deletePost(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, this.headers);
   }
 
 }
