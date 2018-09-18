@@ -52,7 +52,3 @@ define('JWT_AUTH_CORS_ENABLE', true);
 2. Abra o diretório raiz dessa solução através de um prompt de comando e execute o comando `npm run prod` para que sejam compilados os arquivos de distribuição da aplicação. Após a finalização da compilação será criada uma pasta `app` no diretório raiz da solução que contém a aplicação como um todo.
 
 3. copie a pasta app para a pasta raiz do website
-4. 
-
-
-@M3dicinaTest

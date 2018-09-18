@@ -1,6 +1,5 @@
 import { Action } from "@ngrx/store";
 import { IUser } from "@core/interfaces/user.interface";
-import { CONST_CACHE_NAME } from "@app/+core/contants";
 
 // Initial state
 export const userInitialState: IUser = {};
@@ -25,7 +24,7 @@ export type Actions = UserOnline | UserOffline;
 export function UserReducer(state: IUser = null, action: Actions) {
 
   if (state == null)
-    state = JSON.parse(localStorage.getItem(CONST_CACHE_NAME)) as IUser;
+    state = JSON.parse(localStorage.getItem('__WordPress__iMedicina')) as IUser;
 
   switch (action.type) {
     case USER_ONLINE:
