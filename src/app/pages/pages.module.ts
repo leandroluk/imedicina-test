@@ -10,9 +10,9 @@ import { CommonsModule } from './+commons/commons.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
 
-import { LoginComponent } from './login';
-import { ArticlesComponent } from './articles';
-import { ArticleComponent } from './article';
+import { LoginComponent } from './login/login.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
     declarations: [

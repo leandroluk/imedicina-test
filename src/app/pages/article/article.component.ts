@@ -14,7 +14,11 @@ import { ToasterService } from 'angular2-toaster';
 export class ArticleComponent {
 
   public state: string;
-  public post: IPost;
+  public post: IPost = {
+    title: {},
+    slug: '',
+    content: {}
+  };
 
   public froalaOptions: any = {
     placeholderText: 'Escreva seu post aqui',
@@ -30,7 +34,9 @@ export class ArticleComponent {
     this.route.params.subscribe((params: { id: number }) => {
       if (!params.id) return;
       this.postService.getPost(params.id)
-        .subscribe(post => this.post = Object.assign(this.post, post));
+        .subscribe(post => {
+          this.post = Object.assign(this.post, post);
+        });
     });
   }
 
