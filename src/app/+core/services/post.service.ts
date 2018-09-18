@@ -13,10 +13,11 @@ export class PostService {
 
   private get headers(): { headers: IHttpHeaders } {
     return { headers: this.user.headers };
-  };
+  }
+
   private get baseUrl(): string {
     return BASE_URL + '/wp/v2/posts';
-  };
+  }
 
   constructor(
     private user: UserService,
@@ -39,7 +40,7 @@ export class PostService {
       content: post.content,
       excerpt: post.excerpt,
       author: 1
-    }
+    };
 
     return this.http.post(`${this.baseUrl}`, post, this.headers);
   }
@@ -51,7 +52,7 @@ export class PostService {
       title: post.title,
       content: post.content,
       excerpt: post.excerpt
-    }
+    };
 
     return this.http.post(`${this.baseUrl}/${id}`, post, this.headers);
 

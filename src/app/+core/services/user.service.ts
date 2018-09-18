@@ -19,12 +19,16 @@ export class UserService {
   }
 
   public get headers(): IHttpHeaders {
-    return {
-      'Authorization': `Basic ${this.user.btoa}`
-    };
+    if (this.user) {
+      return {
+        'Authorization': `Bearer ${this.user.token}`
+      };
+    }
+    return {};
   }
 
-  private _user: IUser
+  private _user: IUser;
+
   public get user(): IUser {
     this._user = JSON.parse(localStorage.getItem(CONST_CACHE_NAME)) as IUser;
     return this._user;
@@ -49,10 +53,12 @@ export class UserService {
       .pipe((res) => {
         res.subscribe(
           (user: IUser) => {
-            this.getUser(user.user_nicename).subscribe(userComplete => {
+            this.user = user;
+            this.store.dispatch(new UserOnline(this.user));
+            /*this.getUser(user.user_nicename).subscribe(userComplete => {
               this.user = Object.assign({ btoa: btoa(username + ':' + password) }, user, userComplete[0]);
               this.store.dispatch(new UserOnline(this.user));
-            })
+            })*/
           },
           (err) => this.user = {});
         return res;
